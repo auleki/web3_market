@@ -1,10 +1,12 @@
-
 import { useState } from "react"
 import logo from "../../../images/logo.png"
 import NavbarItem from "./NavbarItem"
+import { RiMenu4Fill } from "react-icons/ri";
+import { AiOutlineClose } from "react-icons/ai";
+import MobileNavbar from "./MobileNavbar";
 
 const Navbar = () => {
-  const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false)
+  const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(true)
   const menuLinks = ["Market", "Exchange", "Tutorials", "Wallet"]
   return (
     <nav className="w-full flex md:justify-center justify-between items-center p-4">
@@ -17,7 +19,23 @@ const Navbar = () => {
           Login
         </li>
       </ul>
-      <div className="flex relative"></div>
+      <div className="flex relative">
+        {mobileNavOpen
+          ? <AiOutlineClose
+            fontSize={28}
+            className="text-white md:hidden cursor-pointer"
+            onClick={() => setMobileNavOpen(false)}
+          />
+          : <RiMenu4Fill
+            fontSize={28}
+            className="text-white md:hidden cursor-pointer"
+            onClick={() => setMobileNavOpen(true)}
+          />
+        }
+        {mobileNavOpen && (
+          <MobileNavbar menuItems={menuLinks} closeNavbar={setMobileNavOpen} />
+        )}
+      </div>
     </nav>
   )
 }
