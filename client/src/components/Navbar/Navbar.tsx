@@ -6,7 +6,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import MobileNavbar from "./MobileNavbar";
 
 const Navbar = () => {
-  const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(true)
+  const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false)
   const menuLinks = ["Market", "Exchange", "Tutorials", "Wallet"]
   return (
     <nav className="w-full flex md:justify-center justify-between items-center p-4">
